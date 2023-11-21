@@ -53,5 +53,18 @@ https://github.com/dperson/torproxy
 
 ```
 docker build -t dogsuli .
+docker build --tag dogsuli:1.0 .
 docker run dogsuli
+```
+
+## Saving image
+```
+docker save dogsuli:1.0 | gzip > dogsuli_1.0.tar.gz
+docker save dogsuli:latest | gzip > dogsuli_latest.tar.gz
+```
+
+## Load in the destination server:
+
+```
+docker load < nyu_1.0.tar.gz
 ```
