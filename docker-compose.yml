@@ -1,0 +1,30 @@
+version: "3"
+services:
+  tor1:
+    container_name: tor1
+    image: dperson/torproxy
+    ports:
+      - 8118:8118
+      - 9051:9050
+  
+  tor2:
+    container_name: tor2
+    image: dperson/torproxy
+    ports:
+      - 8119:8118
+      - 9052:9050
+  
+  tor3:
+    container_name: tor3
+    image: dperson/torproxy
+    ports:
+      - 8120:8118
+      - 9053:9050
+  dogsuli:
+    container_name: dogsuli
+    image: dogsuli
+    restart: unless-stopped
+    depends_on:
+      - tor1
+      - tor2
+      - tor3
